@@ -15,7 +15,7 @@ for var in "$@"
     if [ -d "$source" ] ; then
       destination=$backupdir$var
       mkdir -p $destination
-      rsync -arq $source $backupdir
+      rsync -arq $source/ $destination
       rm -rf $source/*
     fi
   done
