@@ -2,6 +2,12 @@
 
 backupdir=~/Backups/
 
+if [[ $# -eq 0 ]] ; then
+  echo 'Usage: tidyup <dir1> <dir2> ... <dirN>'
+  echo 'Tidies ~/<dirN> to ~/Backups/<dirN>'
+  exit 0
+fi
+
 for var in "$@"
   do
     source=~/$var
@@ -9,7 +15,7 @@ for var in "$@"
     if [ -d "$source" ] ; then
       destination=$backupdir$var
       mkdir -p $destination
-      rsync -arq $source $backupdir 
+      rsync -arq $source $backupdir
       rm -rf $source/*
     fi
   done
