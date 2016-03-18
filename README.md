@@ -1,12 +1,27 @@
 # tidyup
 
-A tiny script for tidying up:
+A tiny script for tidying up. The Bash equivalent of shoving everything on your
+desk into a drawer.
 
-    tidyup Downloads Desktop
+    tidyup Desktop
 
-Moves the contents of `~/Downloads` and `~/Desktop` into folders called 
-`~/Backups/Downloads` and `~/Backups/Desktop`, leaving your workspace nice 
-and tidy again.
+Moves the contents of `~/Destop` into a folder called
+`~/Backups/Desktop/<todaysdate>` leaving your working directories nice and
+tidy again.
+
+Works with multiple directories at the same time, which each get their own
+folder in `~/Backups`:
+
+    tidyup Downloads Receipts
+
+Moves contents into `~/Backups/Downloads/<todaysdate>` and
+`~/Backups/Downloads/<todaysdate>`.
+
+Nested directories get their own folder respecting the original hierarchy:
+
+    tidyup Documents/Invoices
+
+Moves contents into `~/Backups/Documents/Invoices/<todaysdate>`
 
 ## Installation
 
