@@ -1,7 +1,9 @@
 # tidyup
 
 A tiny script for tidying up. The Bash equivalent of shoving everything on your
-desk into a drawer:
+desk into a drawer.
+
+## Usage
 
     tidyup Desktop
 
