@@ -8,8 +8,7 @@ desk into a drawer.
     tidyup Desktop
 
 Moves the contents of `~/Desktop` into a folder called
-`~/Backups/Desktop/<todaysdate>` leaving your working directories nice and
-tidy again.
+`~/Backups/Desktop/<todaysdate>`.
 
 Works with multiple directories at the same time, which each get their own
 folder in `~/Backups`:
