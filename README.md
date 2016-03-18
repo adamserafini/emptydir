@@ -1,11 +1,11 @@
 # tidyup
 
 A tiny script for tidying up. The Bash equivalent of shoving everything on your
-desk into a drawer.
+desk into a drawer:
 
     tidyup Desktop
 
-Moves the contents of `~/Destop` into a folder called
+Moves the contents of `~/Desktop` into a folder called
 `~/Backups/Desktop/<todaysdate>` leaving your working directories nice and
 tidy again.
 
@@ -15,7 +15,7 @@ folder in `~/Backups`:
     tidyup Downloads Receipts
 
 Moves contents into `~/Backups/Downloads/<todaysdate>` and
-`~/Backups/Downloads/<todaysdate>`.
+`~/Backups/Receipts/<todaysdate>`.
 
 Nested directories get their own folder respecting the original hierarchy:
 
