@@ -17,6 +17,6 @@ for var in "$@"
       destination=$backupdir$var/$today
       mkdir -p $destination
       rsync -arq $source/ $destination
-      rm -rf $source/*
+      rm -rf $source/..?* $source/.[!.]* $source/*
     fi
   done
