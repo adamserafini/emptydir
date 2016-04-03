@@ -30,9 +30,11 @@ function tidy() {
 
 function main() {
 	if [[ $# -eq 0 ]] ; then
-		echo 'Usage: tidyup <dir1> <dir2> ... <dirN>'
-		echo 'Tidies ~/<dirN> to ~/Backups/<dirN>'
-		exit 0
+		cat <<-EndUsage
+			Usage: tidyup <dir1> <dir2> ... <dirN>
+			Tidies ~/<dirN> to ~/Backups/<dirN>
+		EndUsage
+		exit 1
 	fi
 
 	# Today's date in ddmmyy format.
