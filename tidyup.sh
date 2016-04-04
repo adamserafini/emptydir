@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+function usage() {
+	cat <<-EndUsage
+		Usage: tidyup <dir1> <dir2> ... <dirN>
+		Tidies ~/<dirN> to ~/Backups/<dirN>
+	EndUsage
+	exit 1
+}
+
 function tidy() {
 
 	source=$1
@@ -30,11 +38,7 @@ function tidy() {
 
 function main() {
 	if [[ $# -eq 0 ]] ; then
-		cat <<-EndUsage
-			Usage: tidyup <dir1> <dir2> ... <dirN>
-			Tidies ~/<dirN> to ~/Backups/<dirN>
-		EndUsage
-		exit 1
+		usage
 	fi
 
 	# Today's date in ddmmyy format.
