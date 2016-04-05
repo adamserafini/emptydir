@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function usage() {
+usage() {
 	cat <<-EndUsage
 		Usage: tidyup <dir1> <dir2> ... <dirN>
 		Tidies ~/<dirN> to ~/Backups/<dirN>
@@ -8,7 +8,7 @@ function usage() {
 	exit 1
 }
 
-function tidy() {
+tidy() {
 
 	source=$1
 	destination=$2
@@ -36,7 +36,7 @@ function tidy() {
 	fi
 }
 
-function main() {
+main() {
 	if [[ $# -eq 0 ]] ; then
 		usage
 	fi
