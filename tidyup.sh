@@ -37,7 +37,8 @@ tidy() {
 }
 
 main() {
-	if [[ $# -eq 0 ]] ; then
+	# Script takes two and only two parameters.
+	if [[ $# -ne 2 ]] ; then
 		usage
 	fi
 
