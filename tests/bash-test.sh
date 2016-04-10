@@ -23,6 +23,10 @@ error () {
 	exit 1
 }
 
+test_expect_code_and_output() {
+  test "$#" = 3 || error "test_expect_code_and_output requires 3 parameters."
+}
+
 # Only 'run' the tests if this script is called directly:
 RUNNING="$(basename $0)"
 
