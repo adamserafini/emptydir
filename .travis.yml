@@ -3,4 +3,4 @@ language: bash
 script: bash tests/bash-test.sh
 
 notifications:
-  emails: false
+  email: false
