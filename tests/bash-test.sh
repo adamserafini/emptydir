@@ -2,7 +2,9 @@
 
 # (c) Adam Serafini 2016
 
-# My ad-hoc library for testing bash CLI projects.
+# My ad-hoc library for testing bash CLI projects. It is loosely modelled on
+# on the test suite for todo.txt
+# https://github.com/ginatrapani/todo.txt-cli/tree/master/tests
 
 # Export the test directory:
 export DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
@@ -19,7 +21,6 @@ run() {
 
 error () {
 	echo "error: $*"
-	trap - EXIT
 	exit 1
 }
 

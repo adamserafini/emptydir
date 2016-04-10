@@ -2,4 +2,4 @@
 
 . $DIR/bash-test.sh
 
-echo $DIR
+test_expect_code_and_output 0 1 2 3
