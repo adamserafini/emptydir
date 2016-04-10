@@ -17,6 +17,12 @@ run() {
   exit 1
 }
 
+error () {
+	echo "error: $*"
+	trap - EXIT
+	exit 1
+}
+
 # Only 'run' the tests if this script is called directly:
 RUNNING="$(basename $0)"
 
