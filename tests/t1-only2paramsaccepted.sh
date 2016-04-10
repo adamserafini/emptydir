@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-. ./bash-test.sh
+. $DIR/bash-test.sh
 
 echo $DIR
