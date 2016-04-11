@@ -20,8 +20,8 @@ run() {
 }
 
 error () {
-	echo "error: $*"
-	exit 1
+  echo "error: $*"
+  exit 1
 }
 
 test_expect_code_and_output() {
