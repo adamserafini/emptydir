@@ -3,11 +3,11 @@
 dir=/usr/local/bin/
 filename=tidyup
 ext=.sh
-destination=$dir$filename$ext
+target=$dir$filename$ext
 
 src=https://raw.githubusercontent.com/adamserafini/tidyup/master/tidyup.sh
-curl $src -o $destination
-chmod u+x $destination
+curl $src -o $target
+chmod u+x $target
 
 # Let the user run the script without .sh extension:
-ln -s $destination $dir$filename
+ln -s $target $dir$filename
