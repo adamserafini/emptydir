@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 usage() {
-	cat <<-EndUsage
-		Usage: tidyup <dir1> <dir2> ... <dirN>
-		Tidies ~/<dirN> to ~/Backups/<dirN>
-	EndUsage
+	echo 'usage: tidyup source_directory target_directory'
 	exit 1
 }
 
