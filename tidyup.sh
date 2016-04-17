@@ -8,6 +8,8 @@ usage() {
 tidy() {
 	# Parameters:		$1: source_directory
 	#								$2: target_directory
+	local source=$1
+	local target=$2
 
 	source=$1
 	destination=$2
