@@ -7,11 +7,11 @@
 # https://github.com/ginatrapani/todo.txt-cli/tree/master/tests
 
 # Export the test directory:
-export DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+export TEST_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 run() {
   # Iterate through all files that match the test pattern.
-  for filename in $DIR/t[0-9]*-*.sh
+  for filename in $TEST_DIR/t[0-9]*-*.sh
   do
     $filename
   done
