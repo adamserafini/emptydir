@@ -20,3 +20,8 @@ emptyhidden() {
   rm -rf $1/..?* $1/.[!.]*
 }
 
+empty() {
+  # Remove visible files and subdirectories from a directory.
+  rm -rf $1/*
+}
+
