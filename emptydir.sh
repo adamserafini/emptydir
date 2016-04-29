@@ -51,6 +51,11 @@ main() {
   # Remove options parsed by getopts.
   shift $((OPTIND-1))
 
+  # If no directory arguments given, show usage and exit
+  if [[ $# -eq 0 ]]; then
+    usage
+  fi
+
   cd=emptydir
   # Script returns 0 if all directories emptied, else 1.
   retval=0
