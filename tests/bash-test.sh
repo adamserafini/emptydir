@@ -9,6 +9,9 @@
 # Export the test directory:
 export TEST_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+# Export the source directory:
+export SRC_DIR="$(dirname "$TEST_DIR")"
+
 run() {
   # Iterate through all files that match the test pattern.
   for filename in $TEST_DIR/t[0-9]*-*.sh
