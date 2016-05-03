@@ -28,6 +28,12 @@ error () {
 }
 
 test_expect_code_and_output() {
+  # Function takes 3 parameters:
+  # - the bash command to be run
+  # - the expected code
+  # - the expected output
+
+  # Test for correct parameters and exit test suite if not given.
   test "$#" = 3 || error "test_expect_code_and_output requires 3 parameters."
 }
 
