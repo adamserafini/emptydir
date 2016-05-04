@@ -35,6 +35,21 @@ test_expect_code_and_output() {
 
   # Test for correct parameters and exit test suite if not given.
   test "$#" = 3 || error "test_expect_code_and_output requires 3 parameters."
+
+  expected_code=$2
+  expected_output=$3
+
+  # Run the command and store the resulting output and code.
+  actual_output=$(eval $1)
+  actual_code=$?
+
+  if [[ $actual_code -ne $expected_code ]]; then
+    return 1
+  fi
+
+  if [[ "$actual_output" != "$expected_output" ]]; then
+    return 1
+  fi
 }
 
 # Only 'run' the tests if this script is called directly:
