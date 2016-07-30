@@ -1,0 +1,44 @@
+.\" Copyright (c) 2016
+.\"	Adam Serafini.  All rights reserved.
+.\"
+.\"	@(#)emptydir.1	1.0 (Adam Serafini) 30/07/16
+.\"
+.Dd July 30,2016
+.Dt EMPTYDIR 1
+.Os
+.Sh NAME
+.Nm emptydir
+.Nd empty directories
+.Sh SYNOPSIS
+.Nm
+.Op Fl a
+.Ar directory ...
+.Sh DESCRIPTION
+The
+.Nm
+utility empties the directory entry specified by
+each
+.Ar directory
+argument.
+.Pp
+Arguments are processed in the order given.
+.Pp
+The following option is available:
+.Bl -tag -width indent
+.It Fl a
+Hidden files or subdirectories in each
+.Ar directory
+argument are also removed.
+.El
+.Pp
+The
+.Nm
+utility exits with one of the following values:
+.Bl -tag -width Ds
+.It Li \&0
+Each directory entry specified by a dir operand
+referred to a directory and was emptied
+successfully.
+.It Li \&>\&0
+An error occurred.
+.El
