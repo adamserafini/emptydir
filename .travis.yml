@@ -5,7 +5,7 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq bats
 
-script: bats test/tests.bat
+script: bats test/tests.bats
 
 notifications:
   email: false
