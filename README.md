@@ -1,4 +1,4 @@
-# emptydir
+# emptydir [![Build Status](https://travis-ci.org/adamserafini/tidyup.svg?branch=master)](https://travis-ci.org/adamserafini/tidyup)
 *nix shell command for emptying directories.
 
     usage: emptydir [-a] directory ...
