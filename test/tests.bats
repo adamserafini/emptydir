@@ -38,6 +38,17 @@ teardown() {
   [ -f tmp/file ]
 }
 
+@test "invoking with an illegal and legal arg prints error" {
+  run bin/emptydir -ax tmp
+  [ "$status" -eq 1 ]
+  [ "${lines[0]}" = "emptydir: illegal option: -- x" ]
+  [ "${lines[1]}" = "usage: emptydir [-a] directory ..." ]
+
+  # Both files should still exist.
+  [ -f tmp/.hiddenfile ]
+  [ -f tmp/file ]
+}
+
 @test "invoking without -a argument removes normal files and dirs" {
   run bin/emptydir tmp
   [ "$status" -eq 0 ]
