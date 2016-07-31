@@ -53,7 +53,7 @@ main() {
   shift "$((OPTIND-1))"
 
   # If no directory arguments given, show usage and exit
-  if [[ $# -eq 0 ]]; then
+  if [ $# -eq 0 ]; then
     usage
   fi
 
@@ -63,13 +63,13 @@ main() {
   # Loop through the directory arguments.
   for path in "$@"
   do
-    if [[ -d $path ]]; then
+    if [ -d "$path" ]; then
       empty $path
-      if [[ "$remove_hidden" = true ]]; then
       # If -a flag was passed also remove hidden files and dirs.
+      if [ "$remove_hidden" = true ]; then
         emptyhidden $path
       fi
-    elif [[ -f $path ]]; then
+    elif [ -f "$path" ]; then
       # It was a valid path but it wasn't a directoy.
       echo "$cmdname: $path: Not a directory" >&2
       retval=1
