@@ -29,14 +29,11 @@ empty() {
 }
 
 main() {
-  # Store the cmd name in a variable (for error reporting)
+  # Store the cmd name in a variable (for error reporting).
   cmdname=emptydir
 
-  # By default, do not empty the directory of hidden files or subdirectories
+  # By default, do not empty the directory of hidden files or subdirectories.
   local remove_hidden=false
-
-  # OPTIND is the number of options found by getopts.
-  OPTIND=1
 
   # Parse the options. The only valid option is -a (all) which empties the
   # directory of hidden files and subdirectories.
@@ -51,26 +48,28 @@ main() {
         ;;
     esac
   done
-  # Remove options parsed by getopts.
-  shift $((OPTIND-1))
+
+  # Remove all options parsed by getopts.
+  shift "$((OPTIND-1))"
 
   # If no directory arguments given, show usage and exit
-  if [[ $# -eq 0 ]]; then
+  if [ $# -eq 0 ]; then
     usage
   fi
 
-  cd=emptydir
   # Script returns 0 if all directories emptied, else 1.
   retval=0
   # Loop through the directory arguments.
   for path in "$@"
   do
-    if [[ -d $path ]]; then
+    if [ -d "$path" ]; then
       empty $path
-      if [[ "$remove_hidden" = true ]]; then
+      # If -a flag was passed also remove hidden files and dirs.
+      if [ "$remove_hidden" = true ]; then
         emptyhidden $path
       fi
-    elif [[ -f $path ]]; then
+    elif [ -f "$path" ]; then
+      # It was a valid path but it wasn't a directoy.
       echo "$cmdname: $path: Not a directory" >&2
       retval=1
     else
