@@ -57,7 +57,6 @@ main() {
     usage
   fi
 
-  cd=emptydir
   # Script returns 0 if all directories emptied, else 1.
   retval=0
   # Loop through the directory arguments.
