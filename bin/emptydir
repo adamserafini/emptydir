@@ -35,9 +35,6 @@ main() {
   # By default, do not empty the directory of hidden files or subdirectories.
   local remove_hidden=false
 
-  # OPTIND is the number of options found by getopts.
-  OPTIND=1
-
   # Parse the options. The only valid option is -a (all) which empties the
   # directory of hidden files and subdirectories.
   while getopts ":a" opt; do
