@@ -48,9 +48,9 @@ main() {
         ;;
     esac
   done
-  shift $((OPTIND-1))
 
   # Remove all options parsed by getopts.
+  shift "$((OPTIND-1))"
 
   # If no directory arguments given, show usage and exit
   if [[ $# -eq 0 ]]; then
