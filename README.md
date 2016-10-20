@@ -11,8 +11,8 @@ To install, use [basher](https://github.com/basherpm/basher):
 
 Tests are written with [bats](https://github.com/sstephenson/bats):
 
-    bats test/tests/bats
-    
+    bats test/tests.bats
+
 It even comes with a man page!
 
     man emptydir
