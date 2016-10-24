@@ -1,12 +1,13 @@
 #!/usr/bin/env bats
 
-setup() {
-  mkdir tmp tmp/.hiddendir tmp/dir
-  touch tmp/.hiddenfile tmp/file
-}
-
 teardown() {
   rm -rf tmp
+}
+
+setup() {
+  teardown
+  mkdir tmp tmp/.hiddendir tmp/dir
+  touch tmp/.hiddenfile tmp/file
 }
 
 @test "invoking emptydir with no arguments prints usage" {
