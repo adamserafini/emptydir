@@ -77,3 +77,15 @@ atom
   [ ! -f tmp/file ]
   [ ! -d tmp/dir ]
 }
+
+@test "invoking without -f flag and with confirmation empties the dir" {
+  run bash -c "yes | bin/emptydir tmp"
+  [ ! -f tmp/file ]
+  [ ! -d tmp/dir ]
+}
+
+@test "invoking without -f flag and without confirmation does not empty" {
+  run bash -c "yes no | bin/emptydir tmp"
+  [ -f tmp/file ]
+  [ -d tmp/dir ]
+}
