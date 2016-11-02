@@ -50,17 +50,17 @@ setup() {
   [ -f tmp/file ]
 }
 
-@test "invoking without -a argument removes normal files and dirs" {
-  run bin/emptydir tmp
+@test "invoking without -a flag removes normal files and dirs" {
+  run bin/emptydir -f tmp
   [ "$status" -eq 0 ]
   [ -f tmp/.hiddenfile ]
   [ -d tmp/.hiddendir ]
   [ ! -f tmp/file ]
   [ ! -d tmp/dir ]
 }
-
-@test "invoking with -a argument removes all files and dirs" {
-  run bin/emptydir -a tmp
+atom
+@test "invoking with -a flag removes all files and dirs" {
+  run bin/emptydir -af tmp
   [ "$status" -eq 0 ]
   [ ! -f tmp/.hiddenfile ]
   [ ! -d tmp/.hiddendir ]
@@ -69,7 +69,7 @@ setup() {
 }
 
 @test "invoking with invalid and valid dir returns error" {
-  run bin/emptydir tmp notexist
+  run bin/emptydir -f tmp notexist
   [ "$status" -eq 1 ]
   [ "$output" = "emptydir: notexist: No such file or directory" ]
 
