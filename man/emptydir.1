@@ -1,7 +1,7 @@
 .\" Copyright (c) 2016
 .\"	Adam Serafini.  All rights reserved.
 .\"
-.\"	@(#)emptydir.1	1.0 (Adam Serafini) 30/07/16
+.\"	@(#)emptydir.1	1.1 (Adam Serafini) 30/07/16
 .\"
 .Dd July 30,2016
 .Dt EMPTYDIR 1
@@ -11,7 +11,7 @@
 .Nd empty directories
 .Sh SYNOPSIS
 .Nm
-.Op Fl a
+.Op Fl af
 .Ar directory ...
 .Sh DESCRIPTION
 The
@@ -23,12 +23,14 @@ argument.
 .Pp
 Arguments are processed in the order given.
 .Pp
-The following option is available:
+The following options are available:
 .Bl -tag -width indent
 .It Fl a
 Hidden files or subdirectories in each
 .Ar directory
 argument are also removed.
+.It Fl f
+Confirmation prompt is suppressed.
 .El
 .Pp
 The
