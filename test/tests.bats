@@ -58,7 +58,7 @@ setup() {
   [ ! -f tmp/file ]
   [ ! -d tmp/dir ]
 }
-atom
+
 @test "invoking with -a flag removes all files and dirs" {
   run bin/emptydir -af tmp
   [ "$status" -eq 0 ]
