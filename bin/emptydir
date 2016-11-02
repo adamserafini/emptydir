@@ -20,30 +20,75 @@ emptyhidden() {
 
   #	 1/ $1/..?* removes all dot-dot files and subdirs except '..'
   #	 2/ $1/.[!.]* removes all dot files and subdirs except '.'
+
   rm -rf $1/..?* $1/.[!.]*
 }
 
 empty() {
   # Remove visible files and subdirectories from a directory.
+
   rm -rf $1/*
 }
 
+abspath() {
+  # Echo the absolute path of a directory path argument.
+
+  echo $(cd $1; pwd)
+}
+
+emptypath() {
+  # Handle the full logic for emptying a path including user confirmation,
+  # validity test and error reporting.
+
+  if [ -d "$1" ]; then
+    # Convert to absolute path.
+    local path=$(abspath $1)
+
+    # Prompt for confirmation if the user hasn't set the -f flag.
+    if [ "$force" = false ]; then
+      read -p "empty ${path}? " -r
+      if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        # Exit the function early if the user does not confirm.
+        return
+      fi
+    fi
+
+    empty $path
+    # If -a flag was passed also remove hidden files and dirs.
+    if [ "$remove_hidden" = true ]; then
+      emptyhidden $path
+    fi
+
+  elif [ -f "$path" ]; then
+    # It was a valid path but it wasn't a directoy.
+    echo "emptydir: $path: Not a directory" >&2
+    retval=1
+
+  else
+    echo "emptydir: $path: No such file or directory" >&2
+    retval=1
+  fi
+}
+
 main() {
-  # Store the cmd name in a variable (for error reporting).
-  cmdname=emptydir
-
-  # By default, do not empty the directory of hidden files or subdirectories.
+  # By default, do not empty the directory of hidden files or subdirectories
+  # but do prompt for confirmation.
   local remove_hidden=false
+  local force=false
 
-  # Parse the options. The only valid option is -a (all) which empties the
-  # directory of hidden files and subdirectories.
-  while getopts ":a" opt; do
+  # Parse the options. The only valid options are -a (all) which empties the
+  # directory of hidden files and subdirectories and -f (force) which suppresses
+  # any confirmation from the user.
+  while getopts ":af" opt; do
     case $opt in
       a)
         remove_hidden=true
         ;;
+      f)
+        force=true
+        ;;
       \?)
-        echo "$cmdname: illegal option: -- $OPTARG" >&2
+        echo "emptydir: illegal option: -- $OPTARG" >&2
         usage
         ;;
     esac
@@ -57,25 +102,12 @@ main() {
     usage
   fi
 
-  # Script returns 0 if all directories emptied, else 1.
+  # Script returns 0 if all confirmed directories were emptied, else 1.
   retval=0
   # Loop through the directory arguments.
   for path in "$@"
   do
-    if [ -d "$path" ]; then
-      empty $path
-      # If -a flag was passed also remove hidden files and dirs.
-      if [ "$remove_hidden" = true ]; then
-        emptyhidden $path
-      fi
-    elif [ -f "$path" ]; then
-      # It was a valid path but it wasn't a directoy.
-      echo "$cmdname: $path: Not a directory" >&2
-      retval=1
-    else
-      echo "$cmdname: $path: No such file or directory" >&2
-      retval=1
-    fi
+    emptypath $path
   done
 
   exit $retval
